@@ -17,10 +17,10 @@ import (
 
 	"github.com/lowmagic/compa-engine/engine"
 	"github.com/lowmagic/compa-engine/engine/chat"
+	"github.com/lowmagic/compa-engine/engine/compose"
 	"github.com/lowmagic/compa-engine/engine/localdir"
 	"github.com/lowmagic/compa-engine/engine/stubcases"
 	"github.com/lowmagic/compa-experts/catalogs/files"
-	"github.com/lowmagic/compa-experts/compose"
 	"github.com/lowmagic/compa-experts/experts/artifacts"
 )
 
