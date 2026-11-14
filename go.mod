@@ -3,8 +3,8 @@ module github.com/lowmagic/compa
 go 1.27.4
 
 require (
-	github.com/lowmagic/compa-engine v0.0.0-20261114174801-6cedb48ae3d4
-	github.com/lowmagic/compa-experts v0.0.0-20261114174812-d52952e585b7
+	github.com/lowmagic/compa-engine v0.0.0-20261114180550-b7888e45f9f8
+	github.com/lowmagic/compa-experts v0.0.0-20261114180609-1d6cca76b47f
 )
 
 require (
