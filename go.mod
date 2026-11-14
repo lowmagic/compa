@@ -4,7 +4,7 @@ go 1.27.4
 
 require (
 	github.com/lowmagic/compa-engine v0.0.0-20261114193419-2f610184b76b
-	github.com/lowmagic/compa-experts v0.0.0-20261114180609-1d6cca76b47f
+	github.com/lowmagic/compa-experts v0.0.0-20261114193613-313d01c71bbd
 )
 
 require (
