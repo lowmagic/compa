@@ -1,0 +1,23 @@
+# A made-up case: nothing here comes from a real one.
+id: demo
+subject: Worker stops taking jobs after losing its database connection
+description: |
+  Since this morning the queue worker stops taking jobs a few minutes after
+  it starts. Restarting it helps for a while. Its log is attached.
+status: Waiting on Support
+waitingOnSupport: true
+severity: 3 (Normal)
+product: Example Queue
+productVersion: "2.4"
+owner: {id: user-1, name: support-engineer}
+created: 2026-03-01T11:30:00Z
+updated: 2026-03-01T11:40:00Z
+comments:
+  - id: c1
+    author: {id: user-2, name: A. Customer}
+    authorKind: customer
+    visibility: public
+    created: 2026-03-01T11:30:00Z
+    body: |
+      The worker log from the last run is attached as logs/worker.log. The
+      database itself looks healthy from our side.

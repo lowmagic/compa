@@ -1,0 +1,19 @@
+# A user's configuration: copy to ~/.config/compa/config.yaml and change it.
+# It holds only what differs from compa's built-in defaults.
+apiVersion: compa.lowmag.cc/config/v1alpha1
+kind: Config
+reasoning:
+  # Allow model calls to an external provider. Without this compa calls no
+  # model, and everything else works: opening a case, its comments, its
+  # evidence and the tools you run yourself. Secrets are redacted from
+  # everything a call sends.
+  maxEgressClass: external_provider
+  # The Google Cloud project whose Vertex AI the calls go to, under your
+  # Application Default Credentials. GOOGLE_CLOUD_PROJECT is read when this
+  # is unset.
+  vertex: {project: example-project, location: global}
+# Binaries a model may run over a case's files, sandboxed, beside the
+# built-in tools. None by default.
+# collection:
+#   allowlist:
+#     jq: {path: /usr/bin/jq}

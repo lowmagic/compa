@@ -1,0 +1,18 @@
+{
+  "turns": [
+    {
+      "when": "Orient me",
+      "answers": [
+        {"calls": [{"name": "run_tool", "args": {"id": "generic.files.tree", "question": "How are the case's files laid out?"}}]},
+        {"text": "The case holds one directory, `logs`. The customer reports the worker stops taking jobs after it starts."}
+      ]
+    },
+    {
+      "when": "what failed",
+      "answers": [
+        {"calls": [{"name": "run_tool", "args": {"id": "generic.files.count", "params": {"path": "logs/worker.log"}, "question": "What does the worker's log repeat?"}}]},
+        {"text": "The worker was refused its database connection five times [e4:1] and then gave up [e4:3]."}
+      ]
+    }
+  ]
+}

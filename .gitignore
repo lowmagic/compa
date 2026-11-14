@@ -1,1 +1,10 @@
 .env
+.DS_Store
+
+# A workspace spanning the engine and the experts is local developer state.
+go.work
+go.work.sum
+
+# The binary, and case stores an example run leaves.
+/compa
+.compa/
