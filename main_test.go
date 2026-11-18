@@ -16,10 +16,11 @@ import (
 	"github.com/lowmagic/compa-engine/engine/expertcheck"
 )
 
-// TestBundleLoads: the experts and catalogs this build ships compose, and
-// load through the engine's own check with no error and no warning. The
-// packages come from another module than the engine, so this is where a
-// package and the engine it needs are checked together.
+// TestBundleLoads: the experts and catalogs this build ships compose, load
+// through the engine's own check with no error and no warning, and their
+// fixture cases return what they say. The packages come from another
+// module than the engine, so this is where a package and the engine it
+// needs are checked together.
 func TestBundleLoads(t *testing.T) {
 	b, err := bundle()
 	if err != nil {
@@ -30,7 +31,7 @@ func TestBundleLoads(t *testing.T) {
 		t.Fatal(err)
 	}
 	var out bytes.Buffer
-	if err := expertcheck.Command([]string{"--fail-on-warning", filepath.Join(root, "experts")}, &out); err != nil {
+	if err := expertcheck.Command(context.Background(), []string{"--fail-on-warning", filepath.Join(root, "experts")}, &out); err != nil {
 		t.Fatalf("%v\n%s", err, out.String())
 	}
 	for _, want := range []string{"catalog generic.files ", "expert generic.artifacts "} {
