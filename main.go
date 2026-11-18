@@ -22,6 +22,8 @@ import (
 	"github.com/lowmagic/compa-engine/engine/stubcases"
 	"github.com/lowmagic/compa-experts/catalogs/files"
 	"github.com/lowmagic/compa-experts/experts/artifacts"
+	"github.com/lowmagic/compa-experts/experts/connections"
+	"github.com/lowmagic/compa-experts/routing"
 )
 
 //go:embed defaults.yaml
@@ -78,11 +80,13 @@ func casesDir() (string, error) {
 	return filepath.Join(home, "cases"), nil
 }
 
-// bundle is the experts and catalogs this build ships. The import list
-// above and this call say what they are.
+// bundle is the experts, catalogs and routing library this build ships.
+// The import list above and this call say what they are.
 func bundle() (fs.FS, error) {
 	return compose.Bundle(
+		routing.FS,
 		files.FS,
 		artifacts.FS,
+		connections.FS,
 	)
 }

@@ -9,6 +9,9 @@ waitingOnSupport: true
 severity: 3 (Normal)
 product: Example Queue
 productVersion: "2.4"
+# The routing key a case source would report for the specialty that owns
+# the case; the bundled routing library maps it to generic.connections.
+routingKeys: [connectivity]
 owner: {id: user-1, name: support-engineer}
 created: 2026-03-01T11:30:00Z
 updated: 2026-03-01T11:40:00Z

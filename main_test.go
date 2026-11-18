@@ -34,7 +34,7 @@ func TestBundleLoads(t *testing.T) {
 	if err := expertcheck.Command(context.Background(), []string{"--fail-on-warning", filepath.Join(root, "experts")}, &out); err != nil {
 		t.Fatalf("%v\n%s", err, out.String())
 	}
-	for _, want := range []string{"catalog generic.files ", "expert generic.artifacts "} {
+	for _, want := range []string{"catalog generic.files ", "expert generic.artifacts ", "expert generic.connections "} {
 		if !strings.Contains(out.String(), want) {
 			t.Errorf("the bundle lacks %q:\n%s", want, out.String())
 		}
@@ -82,13 +82,38 @@ func TestExampleCaseOpens(t *testing.T) {
 	if code != 0 {
 		t.Fatalf("exit %d: %s", code, errs)
 	}
-	for _, want := range []string{"case demo: Worker stops taking jobs", "attachments: 1, holding 1 file", "generic.artifacts 0.1.0 installed"} {
+	for _, want := range []string{"case demo: Worker stops taking jobs", "attachments: 1, holding 1 file", "experts: generic.artifacts 0.1.0, generic.connections 0.1.0 installed"} {
 		if !strings.Contains(out, want) {
 			t.Errorf("case open lacks %q:\n%s", want, out)
 		}
 	}
 	if _, errs, code := c.run(nil, "case", "open", "absent"); code == 0 || !strings.Contains(errs, "absent") {
 		t.Errorf("a case with no file: exit %d, %q", code, errs)
+	}
+}
+
+// TestRoutingKeySuggestsTheExpert: the example case's routing key,
+// connectivity, is one the bundled routing library maps to
+// generic.connections, so opening the case suggests it, the expert the
+// opening turn loads first; the same case with no routing key suggests
+// none.
+func TestRoutingKeySuggestsTheExpert(t *testing.T) {
+	c := newCompa(t)
+	out, errs, code := c.run(nil, "case", "open", "demo")
+	if code != 0 || !strings.Contains(out, "suggested generic.connections 0.1.0 (key connectivity)") {
+		t.Errorf("case open: exit %d, %s\n%s", code, errs, out)
+	}
+	demo, err := os.ReadFile(filepath.Join(c.cases, "demo.yaml"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	unrouted := strings.Replace(strings.Replace(string(demo), "id: demo\n", "id: unrouted\n", 1), "routingKeys: [connectivity]\n", "", 1)
+	if err := os.WriteFile(filepath.Join(c.cases, "unrouted.yaml"), []byte(unrouted), 0o600); err != nil {
+		t.Fatal(err)
+	}
+	out, errs, code = c.run(nil, "case", "open", "unrouted")
+	if code != 0 || strings.Contains(out, "suggested generic.connections") || !strings.Contains(out, "no expert suggested") {
+		t.Errorf("a case with no routing key: exit %d, %s\n%s", code, errs, out)
 	}
 }
 
