@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/assets/compa-lockup-dark.svg">
+    <img src="docs/assets/compa-lockup-light.svg" alt="compa" width="240">
+  </picture>
+</p>
+
 # compa
 
 A troubleshooting companion for support cases. You talk to a model about a case in a terminal chat; it reads the
