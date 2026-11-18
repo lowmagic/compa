@@ -15,6 +15,9 @@ engine's.
   parts: the case and artifact sources, the built-in configuration, and the packages `bundle()` composes.
 - `main.go`'s imports and `bundle()` are the one place that says which experts and catalogs the build ships.
 - compa depends on public modules only, and `go.mod` replaces none (`TestImportsOnlyDeclaredModules`).
+- `go.mod` requires the compa-engine version that the compa-experts version it requires was built on, so the
+  packages ship on the engine their own checks ran against; `make pins`, in `make check`, fails on a skew
+  (`go mod graph`). Move the two pins together.
 
 ## Config
 

@@ -1,12 +1,27 @@
-.PHONY: check standards sync-standards
+.PHONY: check pins standards sync-standards
 SHELL := bash
 ORG = https://github.com/lowmagic/.github
+ENGINE = github.com/lowmagic/compa-engine
+EXPERTS = github.com/lowmagic/compa-experts
 
-check:
+check: pins
 	golangci-lint run
 	go test -race ./...
 	go mod tidy -diff
 	git ls-files -z '*.sh' | xargs -0 -r shellcheck
+
+# pins fails when the experts module this build requires names another
+# compa-engine than this build does (go mod graph): Go builds both with the
+# higher, so the experts would ship on an engine their own checks never ran.
+pins:
+	@export GOWORK=off && graph=$$(go mod graph) && main=$$(go list -m) && \
+	pin() { awk -v from="$$1" -v to="$$2@" '$$1 == from && index($$2, to) == 1 { print substr($$2, length(to) + 1) }' <<<"$$graph"; } && \
+	ours=$$(pin "$$main" $(ENGINE)) && experts=$$(pin "$$main" $(EXPERTS)) && \
+	theirs=$$(pin "$(EXPERTS)@$$experts" $(ENGINE)) && \
+	if [ -z "$$ours" ] || [ -z "$$experts" ] || [ "$$ours" != "$$theirs" ]; then \
+		echo "pins: $$main requires $(ENGINE) $${ours:-(none)}, but $(EXPERTS) $${experts:-(none)} requires $${theirs:-(none)}"; \
+		exit 1; \
+	fi
 
 standards:
 	@tmp=$$(mktemp -d) && trap 'rm -rf "$$tmp"' EXIT && \

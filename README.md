@@ -37,5 +37,6 @@ checks packages of your own, and `experts.local` in the configuration loads them
 
 `./compa` with no arguments prints every command. The case's store is `.compa/` inside its folder.
 
-- `make check` runs the checks CI runs, offline: the linter, the tests and `go mod tidy -diff`.
+- `make check` runs the checks CI runs, offline: `make pins` (compa-experts on the engine this build requires), the
+  linter, the tests and `go mod tidy -diff`.
 - `make standards` checks the org standards copies and needs the network.
