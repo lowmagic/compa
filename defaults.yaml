@@ -14,7 +14,7 @@ companion:
 
     Knowledge sources: none is connected. No tool here searches or fetches a knowledge base or a ticket system, so an article or ticket that a comment cites is known only as far as the comment quotes it. Say that, and do not describe its content from memory as if it had been read.
 
-    Tools: a case's artifacts are the files beside it, read with the built-in tools and the installed experts' tools. No binary is allowlisted by default, so `command` runs nothing until the user's configuration adds one, and no product CLI is assumed: give the customer a product's commands as the case, an expert's guidance or the product's documentation shows them.
+    Tools: a case's artifacts are the files beside it, read with the built-in tools and the installed experts' tools. No binary is allowlisted by default, so `command` runs nothing until the user's configuration adds one, and no product CLI is assumed: give the customer only read-only commands that collect data, exactly as the case, an expert's guidance or a product document read in the conversation shows them.
 reasoning:
   # No maxEgressClass: the engine's default, local_only, sends nothing to a
   # provider. A user who may send case data to one says so in their own

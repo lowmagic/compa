@@ -82,7 +82,7 @@ func TestExampleCaseOpens(t *testing.T) {
 	if code != 0 {
 		t.Fatalf("exit %d: %s", code, errs)
 	}
-	for _, want := range []string{"case demo: Worker stops taking jobs", "attachments: 1, holding 1 file", "experts: generic.artifacts 0.1.0, generic.connections 0.1.0 installed"} {
+	for _, want := range []string{"case demo: Worker stops taking jobs", "attachments: 1, holding 1 file", "experts: generic.artifacts 0.1.0, generic.connections 0.1.1 installed"} {
 		if !strings.Contains(out, want) {
 			t.Errorf("case open lacks %q:\n%s", want, out)
 		}
@@ -100,7 +100,7 @@ func TestExampleCaseOpens(t *testing.T) {
 func TestRoutingKeySuggestsTheExpert(t *testing.T) {
 	c := newCompa(t)
 	out, errs, code := c.run(nil, "case", "open", "demo")
-	if code != 0 || !strings.Contains(out, "suggested generic.connections 0.1.0 (key connectivity)") {
+	if code != 0 || !strings.Contains(out, "suggested generic.connections 0.1.1 (key connectivity)") {
 		t.Errorf("case open: exit %d, %s\n%s", code, errs, out)
 	}
 	demo, err := os.ReadFile(filepath.Join(c.cases, "demo.yaml"))

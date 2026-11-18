@@ -7,10 +7,11 @@
 
 # compa
 
-A troubleshooting companion for support cases. You talk to a model about a case in a terminal chat; it reads the
-case's files through deterministic tools that run in a sandbox, keeps what they return as evidence it must cite, and
-loads domain experts when the problem needs them. It writes the update for the customer or the note for a colleague,
-and you copy it: compa posts nothing.
+A triage and data-gathering companion for support cases. You talk to a model about a case in a terminal chat; it
+reads the case's files through deterministic tools that run in a sandbox, keeps what they return as evidence it must
+cite, and loads domain experts when the problem needs them. It does not diagnose: it says what the data shows, asks
+what it leaves open and what data would settle it, and writes an internal comment of its observations, with their
+evidence, for you to review, or a request for data for the customer. You copy it: compa posts nothing.
 
 This repository is the build people install: the engine,
 [compa-engine](https://github.com/lowmagic/compa-engine), with generic parts and the experts of
