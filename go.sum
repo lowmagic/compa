@@ -112,10 +112,10 @@ github.com/itchyny/timefmt-go v0.1.8 h1:1YEo1JvfXeAHKdjelbYr/uCuhkybaHCeTkH8Bo79
 github.com/itchyny/timefmt-go v0.1.8/go.mod h1:5E46Q+zj7vbTgWY8o5YkMeYb4I6GeWLFnetPy5oBrAI=
 github.com/klauspost/compress v1.20.1 h1:T7kKElXUMXrUJ2E9QhQhxFtcK5rPyLdsGZvdbLMPdiQ=
 github.com/klauspost/compress v1.20.1/go.mod h1:LUdAzn7YLVvxLpc7y3V1m40wESHTgc1422pwwBSKYuI=
-github.com/lowmagic/compa-engine v0.0.0-20261118055701-d6a1044bf419 h1:9Ahi5BffSkDkVYFzTLs+a/PKyy2W4b1zc2JnYKE59Os=
-github.com/lowmagic/compa-engine v0.0.0-20261118055701-d6a1044bf419/go.mod h1:9H9PF40w4ZPvFqwA83ELyT2/+35AAlxypw9LDPlt0Sg=
-github.com/lowmagic/compa-experts v0.0.0-20261118055731-0fe8af4b64f4 h1:CBzULYfaIePDBaPESYnvAZe/hEyiKKNj0x9gMsCnM4Q=
-github.com/lowmagic/compa-experts v0.0.0-20261118055731-0fe8af4b64f4/go.mod h1:NgQaHDufndLKNhLsF3MFUpBCchFo6i6ago5mRkHICNw=
+github.com/lowmagic/compa-engine v0.0.0-20261118145341-47c69df36960 h1:qE8nwnog9D3HW6lPKRjxtDRyP8VkEU3Yl7HsZTd/3fQ=
+github.com/lowmagic/compa-engine v0.0.0-20261118145341-47c69df36960/go.mod h1:9H9PF40w4ZPvFqwA83ELyT2/+35AAlxypw9LDPlt0Sg=
+github.com/lowmagic/compa-experts v0.0.0-20261118145356-6f5c50b4998d h1:WKqs0n0hpcnoYZhj+FvyewYzrfAH1b7Sr6YEt8qNC+o=
+github.com/lowmagic/compa-experts v0.0.0-20261118145356-6f5c50b4998d/go.mod h1:Mg6SiKAFERNl5L/lJxW7q2AvATo5YnQz00r2fITm3Y8=
 github.com/lucasb-eyer/go-colorful v1.4.1 h1:1EO+WB73+EH8EVbzlrG3KLAfEypQWVHIBqlTf+2hNss=
 github.com/lucasb-eyer/go-colorful v1.4.1/go.mod h1:R4dSotOR9KMtayYi1e77YzuveK+i7ruzyGqttikkLy0=
 github.com/mattn/go-isatty v0.0.24 h1:tGZZoVgT/KiqK1c8ocVLeDS8BSWMRd47J3Lbz7vsReI=
