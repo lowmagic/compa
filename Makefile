@@ -1,14 +1,25 @@
-.PHONY: check pins standards sync-standards
+.PHONY: check pins install standards sync-standards
 SHELL := bash
 ORG = https://github.com/lowmagic/.github
 ENGINE = github.com/lowmagic/compa-engine
 EXPERTS = github.com/lowmagic/compa-experts
+
+# BINDIR is where make install puts compa; ~/.local/bin by default, which is
+# usually on PATH.
+BINDIR ?= $(HOME)/.local/bin
 
 check: pins
 	golangci-lint run
 	go test -race ./...
 	go mod tidy -diff
 	git ls-files -z '*.sh' | xargs -0 -r shellcheck
+
+# install builds compa from this checkout into BINDIR and says which build
+# it is, so the compa on PATH is the one just built.
+install:
+	mkdir -p $(BINDIR)
+	go build -o $(BINDIR)/compa .
+	$(BINDIR)/compa version
 
 # pins fails when the experts module this build requires names another
 # compa-engine than this build does (go mod graph): Go builds both with the

@@ -23,6 +23,9 @@ This repository is the build people install: the engine,
 go build -o compa . && ./compa version
 ```
 
+`make install` builds it into `~/.local/bin` instead (`BINDIR=<dir>` for another) and prints which build it is; the
+examples below then run `compa` rather than `./compa`.
+
 **Cases.** compa reads cases from one directory, `COMPA_CASES`, by default `~/cases`: `<id>.yaml` describes a case,
 its details and comments, and `<id>/` holds its files, such as an unpacked diagnostic archive.
 [examples/cases](examples/cases) has one to try:
