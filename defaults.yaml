@@ -19,10 +19,18 @@ reasoning:
   # No maxEgressClass: the engine's default, local_only, sends nothing to a
   # provider. A user who may send case data to one says so in their own
   # configuration (examples/config.yaml).
+  # OpenRouter, through the engine's OpenAI-compatible provider, whose base
+  # URL is OpenRouter's by default. The key is read from OPENROUTER_API_KEY
+  # when a call is made, never from configuration. Cache marks are sent,
+  # which OpenRouter passes to the models that take them.
+  openai: {apiKeyEnv: OPENROUTER_API_KEY, cacheMarks: true}
   models:
     standard: {provider: vertex-gemini, model: gemini-3.8-flash, efforts: [low, medium, high]}
     lite: {provider: vertex-gemini, model: gemini-3.5-flash-lite, efforts: [minimal, low, medium, high]}
     sonnet: {provider: vertex-anthropic, model: claude-sonnet-4-6}
+    # On OpenRouter; anthropic/claude-haiku-5.5 is the default model of the
+    # engine's opt-in live test of the provider.
+    haiku: {provider: openai, model: anthropic/claude-haiku-5.5}
   profiles:
     # The conversation and its consults, and the case ledger's reading of
     # the comments.

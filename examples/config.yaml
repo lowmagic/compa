@@ -12,6 +12,14 @@ reasoning:
   # Application Default Credentials. GOOGLE_CLOUD_PROJECT is read when this
   # is unset.
   vertex: {project: example-project, location: global}
+  # To call models through OpenRouter instead, set OPENROUTER_API_KEY in the
+  # environment and give each profile an OpenRouter model, such as the
+  # built-in haiku; /model haiku switches the chat's model for a session.
+  # profiles:
+  #   companion: {model: haiku}
+  #   ledger: {model: haiku}
+  #   editor: {model: haiku}
+  #   reviewer: {model: haiku}
 # Binaries a model may run over a case's files, sandboxed, beside the
 # built-in tools. None by default.
 # collection:

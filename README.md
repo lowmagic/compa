@@ -39,8 +39,10 @@ COMPA_CASES=examples/cases ./compa demo             # the chat
 **Models.** Out of the box compa calls no model: its built-in configuration ([defaults.yaml](defaults.yaml)) allows
 nothing to leave the machine, and everything that needs no model works. To use one, copy
 [examples/config.yaml](examples/config.yaml) to `~/.config/compa/config.yaml`, which allows calls to Vertex AI and
-names your Google Cloud project, and sign in with `gcloud auth application-default login`. Secrets are redacted from
-everything a call sends. `--config <file>` layers one more file on top.
+names your Google Cloud project, and sign in with `gcloud auth application-default login`. To use
+[OpenRouter](https://openrouter.ai) instead, set `OPENROUTER_API_KEY` and put the profiles on an OpenRouter model, as
+the example's commented `profiles` do with the built-in `haiku`, or switch a chat to it with `/model haiku`. Secrets
+are redacted from everything a call sends. `--config <file>` layers one more file on top.
 
 **Experts.** [main.go](main.go) lists the expert and catalog packages this build ships. `./compa expert check <dir>`
 checks packages of your own, and `experts.local` in the configuration loads them.
