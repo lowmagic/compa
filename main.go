@@ -16,7 +16,7 @@ import (
 	"path/filepath"
 
 	"github.com/lowmagic/compa-engine/engine"
-	"github.com/lowmagic/compa-engine/engine/chat"
+	"github.com/lowmagic/compa-engine/engine/cli"
 	"github.com/lowmagic/compa-engine/engine/compose"
 	"github.com/lowmagic/compa-engine/engine/localdir"
 	"github.com/lowmagic/compa-engine/engine/stubcases"
@@ -36,7 +36,7 @@ func main() {
 	os.Exit(code)
 }
 
-// run hands the command line to the engine and returns its exit status.
+// run hands the command line to the engine's and returns its exit status.
 func run(args []string) (int, error) {
 	cases, err := casesDir()
 	if err != nil {
@@ -46,7 +46,7 @@ func run(args []string) (int, error) {
 	if err != nil {
 		return 0, err
 	}
-	return engine.Main(args, o), nil
+	return cli.Main(args, o), nil
 }
 
 // options are the parts this build gives the engine, over the cases in
@@ -61,7 +61,6 @@ func options(cases string) (engine.Options, error) {
 		Artifacts: localdir.New(cases),
 		Config:    defaults,
 		Bundle:    experts,
-		Chat:      chat.Run,
 	}, nil
 }
 

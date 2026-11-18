@@ -12,7 +12,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/lowmagic/compa-engine/engine"
+	"github.com/lowmagic/compa-engine/engine/cli"
 	"github.com/lowmagic/compa-engine/engine/expertcheck"
 )
 
@@ -68,7 +68,7 @@ func (c compa) run(config []byte, args ...string) (stdout, stderr string, code i
 		o.Config = config
 	}
 	var out, errs bytes.Buffer
-	code = engine.Run(context.Background(), args, o, strings.NewReader(""), &out, &errs)
+	code = cli.Run(context.Background(), args, o, strings.NewReader(""), &out, &errs)
 	return out.String(), errs.String(), code
 }
 
