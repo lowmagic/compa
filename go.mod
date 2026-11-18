@@ -1,6 +1,6 @@
 module github.com/lowmagic/compa
 
-go 1.27.4
+go 1.26.0
 
 require (
 	github.com/lowmagic/compa-engine v0.0.0-20261114204507-88a03eeb1275

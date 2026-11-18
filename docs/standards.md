@@ -41,6 +41,11 @@ each comes from its own module at its own version.
 compa's specification, architecture and roadmap are compa-engine's (`docs/SPEC.md`, `docs/ARCHITECTURE.md`,
 `docs/ROADMAP.md` there). This repository documents only what the build chooses.
 
+## Go
+
+`go.mod`'s `go` line is compa-engine's and compa-experts', the oldest Go release line a host builds `compa` with,
+so a host builds it with its own Go. This overrides the Layout rule that it names the current release.
+
 ## Known deviations
 
 Where compa doesn't follow the org standards yet. These are debt to pay down, not overrides: each one should go.
